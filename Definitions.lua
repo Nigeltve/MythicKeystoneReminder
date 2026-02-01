@@ -1,5 +1,5 @@
 ---@class Utils: table
-
+---@field InGroup fun(self: Utils) : boolean
 -------------------------------------------------------------------
 
 ---@class Logger: table
@@ -12,7 +12,6 @@
 ---@field LogError fun(self: Logger, msg: string)
 ---@field Dump fun(self: Logger, tbl: table)
 
-
 -------------------------------------------------------------------
 
 ---@class Enums: table
@@ -20,13 +19,15 @@
 ---@field events Events
 
 ---@class Events: table
----@field ADDON_LOADED string
+---@field GROUP_LEFT string
 ---@field LFG_LIST_JOINED_GROUP string
 ---@field LFG_LIST_ACTIVE_ENTRY_UPDATE string
-
+---@field ACCOUNT_CHARACTER_CURRENCY_DATA_RECEIVED string
 
 ---@class Commands: table
-
+---@field Help string
+---@field Test string
+---@field Remind string
 
 -------------------------------------------------------------------
 
@@ -34,3 +35,4 @@
 ---@field logger Logger
 ---@field utils Utils
 ---@field enums Enums
+---@field keyName string?

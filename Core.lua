@@ -42,7 +42,12 @@ local function HandleEvents(_, event, args1)
         end
 
         local fullName = activityInfo.fullName
+        
+        core.keyName = fullName
         core.logger:Say("|cff0be65b"..fullName.."|r")
+
+    elseif event == core.enums.events.GROUP_LEFT or event == core.enums.events.ACCOUNT_CHARACTER_CURRENCY_DATA_RECEIVED then
+        core.keyName = nil
     end
 end
 
@@ -50,4 +55,6 @@ end
 local initFrame = CreateFrame("Frame", nil, UIParent)
 initFrame:RegisterEvent(core.enums.events.LFG_LIST_JOINED_GROUP)
 initFrame:RegisterEvent(core.enums.events.LFG_LIST_ACTIVE_ENTRY_UPDATE)
+initFrame:RegisterEvent(core.enums.events.GROUP_LEFT)
+initFrame:RegisterEvent(core.enums.events.ACCOUNT_CHARACTER_CURRENCY_DATA_RECEIVED)
 initFrame:SetScript("OnEvent", HandleEvents)

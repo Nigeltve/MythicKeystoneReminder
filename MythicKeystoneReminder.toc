@@ -11,3 +11,4 @@ Utils.lua
 Logger.lua
 Enums.lua
 Core.lua
+Commands.lua
