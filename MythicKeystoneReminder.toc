@@ -1,0 +1,13 @@
+## Interface: 120000
+## Title: MythicKeystoneReminder
+## Author: Flowlin
+## Notes: Reminds what keystone you're about to do
+## Version: 0.0.1
+## IconTexture: Interface\AddOns\MythicKeystoneReminder\media\logo.tga
+
+embeds.xml
+Definitions.lua	
+Utils.lua
+Logger.lua
+Enums.lua
+Core.lua
