@@ -12,7 +12,6 @@ local function HandleEvents(_, event, args1)
         local entryData = C_LFGList.GetActiveEntryInfo()
 
         if not entryData then
-            core.logger:LogError("Dont know how you got here!? activity entered but no LfgEntryData")
             return
         end
 
@@ -33,7 +32,6 @@ local function HandleEvents(_, event, args1)
         local activityInfo = C_LFGList.GetActivityInfoTable(activityID)
 
         if not activityInfo then
-            core.logger:LogError("Dont know how you got here!? activity entered but no GroupFinderActivityInfo")
             return
         end
 

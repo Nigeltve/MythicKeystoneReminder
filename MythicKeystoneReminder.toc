@@ -2,7 +2,7 @@
 ## Title: MythicKeystoneReminder
 ## Author: Flowlin
 ## Notes: Reminds what keystone you're about to do
-## Version: 1.0.0
+## Version: 1.0.1
 ## IconTexture: Interface\AddOns\MythicKeystoneReminder\media\logo.tga
 
 Definitions.lua	
