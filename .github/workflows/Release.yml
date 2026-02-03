@@ -1,0 +1,44 @@
+name: Create Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., 1.0.0)'
+        required: true
+        type: string
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write # Required to create releases
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set version
+        id: version
+        run: echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+      
+      - name: Create addon zip
+        run: |
+          # Create a zip file of the addon
+          # Excludes .git and .github directories
+          zip -r MythicKeystoneReminder-${{ steps.version.outputs.VERSION }}.zip . \
+            -x "*.git*" \
+            -x "*.github*"
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: MythicKeystoneReminder-${{ steps.version.outputs.VERSION }}.zip
+          tag_name: v${{ steps.version.outputs.VERSION }}
+          name: Release v${{ steps.version.outputs.VERSION }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
