@@ -27,14 +27,14 @@ jobs:
         run: |
           # Create a zip file of the addon
           # Excludes .git and .github directories
-          zip -r MythicKeystoneReminder-${{ steps.version.outputs.VERSION }}.zip . \
+          zip -r MythicKeystoneReminder.zip . \
             -x "*.git*" \
             -x "*.github*"
       
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          files: MythicKeystoneReminder-${{ steps.version.outputs.VERSION }}.zip
+          files: MythicKeystoneReminder.zip
           tag_name: v${{ steps.version.outputs.VERSION }}
           name: Release v${{ steps.version.outputs.VERSION }}
           draft: false
