@@ -19,8 +19,9 @@
 ---@field events Events
 
 ---@class Events: table
+---@field ADDON_LOADED  string
+---@field PLAYER_LOGOUT string
 ---@field GROUP_LEFT string
----@field LFG_LIST_JOINED_GROUP string
 ---@field LFG_LIST_ACTIVE_ENTRY_UPDATE string
 
 ---@class Commands: table

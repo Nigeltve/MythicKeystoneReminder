@@ -4,6 +4,7 @@
 ## Notes: Reminds what keystone you're about to do
 ## Version: 1.0.1
 ## IconTexture: Interface\AddOns\MythicKeystoneReminder\media\logo.tga
+## SavedVariables: SavedKey
 
 Definitions.lua	
 Utils.lua
