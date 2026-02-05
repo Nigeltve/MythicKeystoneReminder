@@ -6,14 +6,16 @@ local function HandleEvents(_, event, args1)
         if not core.utils:InGroup() then
             SavedKey = nil
             core.keyName = nil
+            return
         end
-
+        
         core.keyName = SavedKey
     end
 
-    if event == core.enums.events.PLAYER_LOGOUT then
-         if not core.utils:InGroup() then
+    if event == core.enums.events.PLAYER_LOGOUT then        
+        if not core.utils:InGroup() then
             SavedKey = nil
+            return
         end
 
         SavedKey = core.keyName
@@ -21,7 +23,7 @@ local function HandleEvents(_, event, args1)
 
     if event == core.enums.events.LFG_LIST_ACTIVE_ENTRY_UPDATE then
         if not args1 then
-            return
+            return;
         end
 
         ---@type LfgEntryData
@@ -34,11 +36,11 @@ local function HandleEvents(_, event, args1)
         ---@type number
         local activityID = nil
 
-        for i, id in ipairs(entryData.activityIDs) do
+        for _, id in ipairs(entryData.activityIDs) do
             activityID = id
             break;
         end
-
+        
         if not activityID then
             return
         end
@@ -50,10 +52,11 @@ local function HandleEvents(_, event, args1)
             return
         end
 
+
         if not activityInfo.isMythicPlusActivity and not activityInfo.isMythicActivity then
             return
         end
-
+        
         local fullName = activityInfo.fullName
         
         core.keyName = fullName
