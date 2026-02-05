@@ -20,7 +20,7 @@ local function HandleEvents(_, event, args1)
     end
 
     if event == core.enums.events.LFG_LIST_ACTIVE_ENTRY_UPDATE then
-        if args1 then
+        if not args1 then
             return
         end
 
