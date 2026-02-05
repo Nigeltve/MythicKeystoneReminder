@@ -1,10 +1,9 @@
 ---@type Core
 local core = select(2, ...)
 
-
 local function HandleEvents(_, event, args1)
-    if event == core.enums.events.LFG_LIST_JOINED_GROUP  or event == core.enums.events.LFG_LIST_ACTIVE_ENTRY_UPDATE then
-        if not args1 then
+    if event == core.enums.events.LFG_LIST_ACTIVE_ENTRY_UPDATE then    
+        if args1 then
             return
         end
 
@@ -24,7 +23,6 @@ local function HandleEvents(_, event, args1)
         end
 
         if not activityID then
-            core.logger:LogError("activityID is nil")
             return
         end
 
@@ -43,16 +41,18 @@ local function HandleEvents(_, event, args1)
         
         core.keyName = fullName
         core.logger:Say("|cff0be65b"..fullName.."|r")
-
-    elseif event == core.enums.events.GROUP_LEFT or event == core.enums.events.ACCOUNT_CHARACTER_CURRENCY_DATA_RECEIVED then
+    end
+    
+    if event == core.enums.events.GROUP_LEFT then
         core.keyName = nil
     end
 end
 
 
 local initFrame = CreateFrame("Frame", nil, UIParent)
+initFrame:RegisterEvent(core.enums.events.ADDON_LOADED)
+initFrame:RegisterEvent(core.enums.events.PLAYER_LOGOUT)
 initFrame:RegisterEvent(core.enums.events.LFG_LIST_JOINED_GROUP)
 initFrame:RegisterEvent(core.enums.events.LFG_LIST_ACTIVE_ENTRY_UPDATE)
 initFrame:RegisterEvent(core.enums.events.GROUP_LEFT)
-initFrame:RegisterEvent(core.enums.events.ACCOUNT_CHARACTER_CURRENCY_DATA_RECEIVED)
 initFrame:SetScript("OnEvent", HandleEvents)

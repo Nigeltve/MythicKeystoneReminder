@@ -22,7 +22,6 @@
 ---@field GROUP_LEFT string
 ---@field LFG_LIST_JOINED_GROUP string
 ---@field LFG_LIST_ACTIVE_ENTRY_UPDATE string
----@field ACCOUNT_CHARACTER_CURRENCY_DATA_RECEIVED string
 
 ---@class Commands: table
 ---@field Help string
